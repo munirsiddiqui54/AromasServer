@@ -11,6 +11,7 @@ import authRoutes from './routes/authRoute.js';
 dotenv.config();
 const PORT = process.env.PORT;
 
+//connect and config Database
 connectDB();
 
 
