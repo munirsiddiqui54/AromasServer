@@ -26,11 +26,6 @@ app.use("/api/v1/auth", authRoutes);
 
 //index file --> Routes (middlewares) --> Controllers--> Models and Helpers
 
-//rest APIS
-app.get("/hello", (req, resp) => {
-    resp.send("<h1>Hello World</h1>")
-})
-
 app.listen(PORT, () => {
     console.log(`Server running on Port ${PORT}`.bgGreen.black)
 })
