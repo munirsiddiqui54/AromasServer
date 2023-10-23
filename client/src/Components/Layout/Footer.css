@@ -1,0 +1,18 @@
+.footer {
+    background-image: linear-gradient(to right, rgb(41, 41, 41), rgb(87, 86, 86));
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+.footer a {
+    text-decoration: none;
+    color: white;
+}
+
+.links a {
+    padding: 10px;
+}
+
+.links {
+    margin: 10px;
+}

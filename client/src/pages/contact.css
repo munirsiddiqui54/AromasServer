@@ -1,0 +1,42 @@
+.contact {
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact a {
+    text-decoration: none;
+    color: black;
+}
+
+.box-2 {
+    width: 70%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+}
+
+@media only screen and (max-width: 930px) {
+    .box-2 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.info-wrap,
+.contact {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.box-2 h1 {
+    font-family: 'Playfair Display SC', serif;
+    text-align: start;
+}
+
+.box-2 a {
+    text-decoration: none;
+}
+
+.box-2 {
+    font-family: 'poppins';
+    text-align: center;
+}

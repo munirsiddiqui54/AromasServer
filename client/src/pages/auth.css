@@ -1,0 +1,25 @@
+.box {
+    width: 40%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+}
+
+@media only screen and (max-width: 850px) {
+    .box {
+        width: 90%;
+    }
+}
+
+.box h1 {
+    font-family: 'Playfair Display SC', serif;
+    text-align: center;
+}
+
+.box a {
+    text-decoration: none;
+}
+
+.box {
+    font-family: 'poppins';
+    text-align: center;
+}

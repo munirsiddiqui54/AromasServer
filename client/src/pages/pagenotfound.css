@@ -1,0 +1,17 @@
+.pnf {
+    display: flex;
+    min-height: 65vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pnf-title {
+    font-size: 100px;
+    font-weight: 700;
+    font-family: 'Playfair Display SC', serif;
+}
+
+.pnf-heading {
+    font-weight: normal;
+}

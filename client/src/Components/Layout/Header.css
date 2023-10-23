@@ -1,0 +1,15 @@
+.active {
+    border-bottom: 1px solid black;
+}
+
+.navbar {
+    font-family: 'Poppins', sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: 17px;
+}
+
+.navbar-brand {
+    font-family: 'Playfair Display SC', serif;
+    letter-spacing: 1.5px;
+    font-size: 25px;
+}
