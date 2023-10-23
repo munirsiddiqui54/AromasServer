@@ -6,7 +6,8 @@
   box-sizing: border-box;
 }
 
-h1 {
+h1,
+h4 {
   font-family: 'Playfair Display SC', serif;
   font-weight: 500;
 }

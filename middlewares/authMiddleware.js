@@ -25,6 +25,8 @@ export const isAdmin = async (req, resp, next) => {
         }
     } catch (error) {
         console.log(error)
-        //resp
+        resp.send({
+            message: 'error in admin login'
+        })
     }
 }
