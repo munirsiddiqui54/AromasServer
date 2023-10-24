@@ -20,7 +20,7 @@ const Footer = () => {
 
                                 </div>
                                 <div className="col-auto">
-                                    <button type="submit" className="btn btn-outline-warning mb-4">
+                                    <button type="submit" className="btn btn-outline-warning mb-3">
                                         Send
                                     </button>
                                 </div>

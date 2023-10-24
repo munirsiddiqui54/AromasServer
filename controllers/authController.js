@@ -9,21 +9,21 @@ export const registerController = async (req, resp) => {
 
         //validations
         if (!name) {
-            return resp.send({ error: 'Name is required' })
+            return resp.send({ message: 'Name is required' })
         }
         if (!email) {
-            return resp.send({ error: 'Email is required' })
+            return resp.send({ message: 'Email is required' })
         }
         if (!password) {
-            return resp.send({ error: 'Password is required' })
+            return resp.send({ message: 'Password is required' })
         }
 
         //check if existing users
         const Ex_user = await userModel.findOne({ email });
         if (Ex_user) {
             return resp.status(200).send({
-                success: true,
-                message: 'User Already Exist. Please Login'
+                success: false,
+                message: 'User Already Exists. Please Login'
             })
         }
         const hashedpassword = await hashmypassword(password);

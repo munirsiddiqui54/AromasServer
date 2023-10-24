@@ -20,6 +20,9 @@
     border-bottom-left-radius: 25px;
 }
 
+.info-wrap {
+    background-color: rgb(153, 150, 150);
+}
 
 @media only screen and (max-width: 930px) {
     .box-2 {
@@ -33,6 +36,10 @@
         border-top-left-radius: 25px;
         border-top-right-radius: 25px;
         border-bottom-left-radius: 0px;
+    }
+
+    .footer button {
+        margin: 10px;
     }
 }
 

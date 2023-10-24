@@ -9,7 +9,7 @@ const Contact = () => {
     return (
         <Layout>
             <div style={{ minHeight: '60vh' }} className='contact box-2 container-md  p-0 d-flex mt-5'>
-                <div class="info-wrap bg-secondary w-100 p-md-5 p-4" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div class="info-wrap w-100 p-md-5 p-4" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                     <h1>Let's get in touch</h1>
                     <p class="mb-4">We're open for any suggestion or just to have a chat</p>
                     <div class="dbox w-100 d-flex align-items-start">
