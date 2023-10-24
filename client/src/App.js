@@ -8,14 +8,11 @@ import Policy from './pages/Policy';
 import PageNotFound from './pages/PageNotFound';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
-import { ToastContainer } from 'react-toastify';
 import { Toaster } from 'react-hot-toast';
-import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <>
-      <ToastContainer />
       <Toaster />
       <Routes>
         <Route path='/' element={<Home />} />
