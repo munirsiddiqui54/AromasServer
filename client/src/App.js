@@ -13,7 +13,10 @@ import { Toaster } from 'react-hot-toast';
 function App() {
   return (
     <>
-      <Toaster />
+      <Toaster
+        position="top-right"
+        reverseOrder={true}
+      />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />

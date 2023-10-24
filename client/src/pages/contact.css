@@ -24,11 +24,25 @@
     background-color: rgb(153, 150, 150);
 }
 
-@media only screen and (max-width: 930px) {
+.nav-2btn {
+    display: none;
+}
+
+
+
+@media only screen and (max-width: 999px) {
     .box-2 {
         width: 90%;
         display: flex;
         flex-direction: column;
+    }
+
+    .nav-btn {
+        display: none;
+    }
+
+    .nav-2btn {
+        display: block;
     }
 
     .info-wrap,
