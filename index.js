@@ -5,8 +5,9 @@ import colors from 'colors';
 import connectDB from "./config/db.js";
 import morgan from "morgan";
 import authRoutes from './routes/authRoute.js';
+import productRoutes from './routes/productRoutes.js';
+import cartRoutes from './routes/cartRoutes.js';
 import cors from 'cors';
-
 
 //Config env file from root
 dotenv.config();
@@ -26,6 +27,8 @@ app.use(morgan("dev"));
 
 //routes 
 app.use("/api/v1/auth", authRoutes);
+app.use('/api/v1/product', productRoutes);
+app.use('/api/v1/cart', cartRoutes)
 
 app.get('/', (req, res) => {
     res.send("Server Running...")

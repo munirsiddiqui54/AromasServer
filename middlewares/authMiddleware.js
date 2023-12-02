@@ -3,8 +3,9 @@ import userModel from '../models/userModel.js';
 
 export const requiresLogin = async (req, resp, next) => {
     try {
-        const decode = await JWT.verify(req.headers.authorization, process.env.JWT_SECRET);
+        const decode = JWT.verify(req.headers.authorization, process.env.JWT_SECRET);
         req.user = decode;
+        console.log("requres login passed")
         next();
     } catch (error) {
         console.log(error);
@@ -13,20 +14,23 @@ export const requiresLogin = async (req, resp, next) => {
 
 export const isAdmin = async (req, resp, next) => {
     try {
+        console.log(req.user)
         const user = await userModel.findOne({ _id: req.user._id });
         if (user.role !== 1) {
             //Not Admin
             return resp.status(401).send({
                 success: false,
-                message: 'Unauthorized Access'
+                message: 'Unauthorized Access',
+                ok: false
             })
         } else {
+            console.log("is admin passed")
             next();
         }
     } catch (error) {
         console.log(error)
         resp.send({
-            message: 'error in admin login'
+            message: 'error in admin login',
         })
     }
 }

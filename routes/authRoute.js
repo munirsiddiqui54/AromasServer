@@ -16,5 +16,10 @@ router.post('/test', requiresLogin, isAdmin, (req, resp) => {
     resp.send("Admin Accces Granted");
 })
 
+router.post('/admin-auth', requiresLogin, isAdmin, (req, resp) => {
+    console.log("this is admin")
+    resp.status(200).send({ ok: true });
+})
+
 export default router;
 
