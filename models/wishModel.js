@@ -7,7 +7,15 @@ const wishSchema = new mongoose.Schema({
     },
     user: {
         type: mongoose.ObjectId,
-        ref: 'users'
+        ref: 'users',
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    name: {
+        type: String,
+        required: true
     }
 }, { timestamps: true })
 

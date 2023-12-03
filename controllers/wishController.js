@@ -1,4 +1,5 @@
 import wishModel from "../models/wishModel.js";
+import productsModel from "../models/productsModel.js";
 
 export const deleteWish = async (req, resp) => {
     try {
@@ -57,14 +58,12 @@ export const addtowish = async (req, resp) => {
             return
         }
 
-        // // Get the Product 
-        // var prod = await productsModel.find({ _id: product }).select('name price -_id');
-        // console.log(prod)
-        // const name = prod[0].name;
-        // let price = prod[0].price;
-        // price = price * quantity;
+        // Get the Product 
+        var prod = await productsModel.find({ _id: product }).select('name price -_id');
+        const name = prod[0].name;
+        let price = prod[0].price;
 
-        const item = await new wishModel({ product, user }).save()
+        const item = await new wishModel({ product, user, name, price }).save()
 
         resp.status(201).send({
             success: true,
