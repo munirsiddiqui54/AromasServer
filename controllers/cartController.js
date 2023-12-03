@@ -3,9 +3,26 @@ import cartModel from "../models/cartModel.js";
 import JWT from 'jsonwebtoken';
 import productsModel from "../models/productsModel.js";
 
+export const deleteItemController = async (req, resp) => {
+    try {
+        console.log('entered')
+        const res = await cartModel.findByIdAndDelete({ _id: req.params.cid });
+        console.log('Got resp')
+        if (res) {
+            return resp.status(200).send({ message: 'Deleted' })
+        }
+    } catch (error) {
+        resp.status(500).send({
+            success: false,
+            message: 'Error removing item from cart',
+            error
+        })
+    }
+}
+
 export const itemController = async (req, resp) => {
     try {
-        const items = await cartModel.find();
+        const items = await cartModel.find({ user: req.params.uid });
         if (items) {
             resp.send({
                 success: true,
@@ -39,22 +56,23 @@ export const addItem = async (req, resp) => {
             case !user: return resp.status(500).send({ error: 'user is unknown' })
             case !product: return resp.status(500).send({ error: 'product is Unknown' })
         }
-        // const isAdded = await cartModel.findOne({ product });
-        // if (isAdded) {
-        //     resp.status(300).send({
-        //         message: 'Product Already Added to Cart'
-        //     })
-        //     return
-        // }
-
+        const isAdded = await cartModel.findOne({ product, user });
+        if (isAdded) {
+            resp.status(300).send({
+                message: 'Product Already Added to Cart'
+            })
+            return
+        }
 
 
         //Get the price of Product 
-        const prod = await productsModel.find({ _id: product });
-        const price = prod.price
-        console.log(prod.photo)
+        var prod = await productsModel.find({ _id: product }).select('name price -_id');
+        console.log(prod)
+        const name = prod[0].name;
+        let price = prod[0].price;
+        price = price * quantity;
 
-        const item = await new cartModel({ product, user, quantity, price: 99 }).save()
+        const item = await new cartModel({ product, user, quantity, price, name }).save()
 
         resp.status(201).send({
             success: true,
