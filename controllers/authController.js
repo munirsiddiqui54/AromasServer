@@ -1,4 +1,5 @@
 import { comparePassword, hashmypassword } from "../helpers/authHelper.js";
+import cartModel from "../models/cartModel.js"
 import userModel from "../models/userModel.js";
 import JWT from 'jsonwebtoken';
 
@@ -71,7 +72,16 @@ export const loginController = async (req, resp) => {
                 message: 'Invalid Password'
             })
         }
-        const token = await JWT.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "3h" });
+        const token = JWT.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "10h" });
+        // const count = await cartModel.find({user:user._id})
+
+        let cartCount = 0
+        await cartModel.count({ user: user._id }).then(count => {
+            cartCount = count
+            console.log(count)
+        })
+
+        console.log(cartCount)
         resp.status(200).send({
             success: true,
             message: 'Successfully Login',
@@ -81,7 +91,8 @@ export const loginController = async (req, resp) => {
                 email: user.email,
                 role: user.role
             },
-            token
+            token,
+            items: cartCount
         })
 
     } catch (error) {

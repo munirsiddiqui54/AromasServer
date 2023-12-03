@@ -5,9 +5,7 @@ import productsModel from "../models/productsModel.js";
 
 export const deleteItemController = async (req, resp) => {
     try {
-        console.log('entered')
         const res = await cartModel.findByIdAndDelete({ _id: req.params.cid });
-        console.log('Got resp')
         if (res) {
             return resp.status(200).send({ message: 'Deleted' })
         }
