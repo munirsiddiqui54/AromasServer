@@ -3,7 +3,9 @@ import productsModel from "../models/productsModel.js";
 
 export const deleteWish = async (req, resp) => {
     try {
-        const res = await wishModel.findByIdAndDelete({ _id: req.params.wid });
+        console.log(req.params.wid)
+        const res = await wishModel.findOneAndDelete({ user: req.params.uid, product: req.params.pid });
+        console.log(res)
         if (res) {
             return resp.status(200).send({ message: 'Deleted' })
         }

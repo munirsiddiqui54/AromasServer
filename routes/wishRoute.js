@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.get('/get-items/:uid', requiresLogin, getwishlist);
 router.post('/add-item-wish', requiresLogin, addtowish);
-router.delete('/delete-item-wish/:wid', requiresLogin, deleteWish);
+router.delete('/delete-item-wish/:pid/:uid', requiresLogin, deleteWish);
 
 export default router;
 
