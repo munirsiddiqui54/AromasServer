@@ -21,10 +21,35 @@ export const deleteItemController = async (req, resp) => {
 export const itemController = async (req, resp) => {
     try {
         const items = await cartModel.find({ user: req.params.uid });
+        console.log(items)
+        var mrp = 0
+        items.map((item) => {
+            mrp = mrp + item.price
+        })
+
+        //if user is new 
+        let discount = 0
+        if (mrp > 150) {
+            discount = 99
+        }
+        // let shipping = 0
+
+        // if user has already few orders 
+        // discount=0
+        let shipping = 50
+
+        const subTotal = mrp + shipping - discount
+        console.log(subTotal)
+
+        const bill = {
+            mrp, shipping, discount, subTotal
+        }
+
         if (items) {
             resp.send({
                 success: true,
-                items
+                items,
+                bill
             })
         } else {
             resp.send({
