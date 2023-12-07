@@ -1,5 +1,5 @@
 import express from 'express'
-import { createProductController, payController, payController2, tokenController } from '../controllers/productController.js'
+import { createProductController } from '../controllers/productController.js'
 import { getPhotoController, deleteProduct, updateController } from '../controllers/productController.js';
 import { getSingleProduct } from '../controllers/productController.js';
 import { getProductsController } from '../controllers/productController.js';
