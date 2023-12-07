@@ -28,7 +28,7 @@ export const registerController = async (req, resp) => {
             })
         }
         const hashedpassword = await hashmypassword(password);
-        const user = await new userModel({ name, email, role, password: hashedpassword }).save();
+        const user = await new userModel({ fname: name, email, role, password: hashedpassword }).save();
         resp.status(201).send({
             success: true,
             message: 'User registered successfully',
@@ -87,7 +87,7 @@ export const loginController = async (req, resp) => {
             message: 'Successfully Login',
             user: {
                 _id: user._id,
-                name: user.name,
+                name: user.fname,
                 email: user.email,
                 role: user.role
             },

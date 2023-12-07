@@ -1,5 +1,5 @@
 import express from 'express'
-import { createProductController } from '../controllers/productController.js'
+import { createProductController, payController, payController2, tokenController } from '../controllers/productController.js'
 import { getPhotoController, deleteProduct, updateController } from '../controllers/productController.js';
 import { getSingleProduct } from '../controllers/productController.js';
 import { getProductsController } from '../controllers/productController.js';
@@ -19,5 +19,8 @@ router.put('/update-product/:pid', requiresLogin, isAdmin, ExpressFormidable(), 
 router.get('/singleproduct/:pid', getSingleProduct);
 
 router.post('/addproduct', requiresLogin, isAdmin, ExpressFormidable(), createProductController);
+
+
+
 
 export default router
