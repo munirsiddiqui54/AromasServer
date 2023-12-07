@@ -8,8 +8,6 @@ import productRoutes from './routes/productRoutes.js';
 import cartRoutes from './routes/cartRoutes.js';
 import orderRoute from './routes/orderRoute.js';
 import cors from 'cors';
-import Stripe from "stripe";
-const stripe = new Stripe(process.env.B_PRIVATE_KEY);
 
 
 //Config env file from root
@@ -38,34 +36,6 @@ app.use('/api/v1/order', orderRoute)
 
 app.use(express.static('public'));
 
-
-
-app.post('/create-checkout-session', async (req, res) => {
-
-    try {
-        const session = await stripe.checkout.sessions.create({
-            line_items: [
-                {
-                    // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                    price: "price_1OKOvrSG8XzUFjmQuHkoZeFj",
-                    quantity: 1,
-                },
-            ],
-            mode: 'payment',
-            success_url: `${process.env.YOUR_DOMAIN}/about`,
-            cancel_url: `${process.env.YOUR_DOMAIN}/contactus`,
-        });
-        res.redirect(303, session.success_url);
-    } catch (err) {
-
-        console.log(err)
-        res.send({
-            success: false
-        })
-        // res.redirect(303, );
-    }
-
-});
 
 
 
