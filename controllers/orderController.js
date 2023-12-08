@@ -41,7 +41,7 @@ export const placeOrder = async (req, resp) => {
     try {
         const { userDetail, cartitems, paymentoption, price } = req.body;
         console.log(paymentoption);
-        const user = await userModel.findByIdAndUpdate(req.params.uid, { fname: userDetail.fname, lname: userDetail.lname, address: userDetail.address, phone: userDetail.phone },);
+        const user = await userModel.findByIdAndUpdate(req.params.uid, { name: userDetail.fname, lname: userDetail.lname, address: userDetail.address, phone: userDetail.phone },);
         await user.save();
         const o = await new orderModel({ cart: cartitems, buyer: req.params.uid, payment: { paymentoption, price } }).save()
         if (o) {

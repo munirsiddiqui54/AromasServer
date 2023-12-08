@@ -88,10 +88,10 @@ export const loginController = async (req, resp) => {
             user: {
                 _id: user._id,
                 name: user.fname,
-                lname: user.lname ? user.lname : '',
+                lname: user.lname,
                 email: user.email,
-                address: user.address ? user.address : '',
-                phone: user.phone ? user.phone : '',
+                address: user.address,
+                phone: user.phone,
                 role: user.role
             },
             token,

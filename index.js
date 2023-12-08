@@ -7,6 +7,7 @@ import authRoutes from './routes/authRoute.js';
 import productRoutes from './routes/productRoutes.js';
 import cartRoutes from './routes/cartRoutes.js';
 import orderRoute from './routes/orderRoute.js';
+import manageRoute from './routes/manageRoute.js';
 import cors from 'cors';
 
 
@@ -30,7 +31,8 @@ app.use(morgan("dev"));
 app.use("/api/v1/auth", authRoutes);
 app.use('/api/v1/product', productRoutes);
 app.use('/api/v1/cart', cartRoutes);
-app.use('/api/v1/order', orderRoute)
+app.use('/api/v1/order', orderRoute);
+app.use('/api/v1/manage', manageRoute)
 
 
 
