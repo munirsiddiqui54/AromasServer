@@ -67,7 +67,7 @@ export const updateController = async (req, resp) => {
 
 export const getSingleProduct = async (req, resp) => {
     try {
-        const product = await productsmodel.findById(req.params.pid);
+        const product = await productsmodel.findById(req.params.pid).select('-photo -description -features');
         if (product) {
             resp.send({
                 success: true,
@@ -141,6 +141,30 @@ export const createProductController = async (req, resp) => {
             success: false,
             error,
             message: 'Something went wrong'
+        })
+    }
+}
+
+export const searchProduct = async (req, resp) => {
+    try {
+        const products = await productsmodel.find({
+            "$or": [
+                { name: { $regex: new RegExp(req.params.key, 'i') } },
+                { features: { $regex: new RegExp(req.params.key, 'i') } },
+                { description: { $regex: new RegExp(req.params.key, 'i') } }
+            ]
+        });
+        if (products) {
+            resp.send({
+                success: true,
+                products
+            })
+        }
+    } catch (err) {
+        console.log(err);
+        resp.send({
+            success: false,
+            message: 'Error 500 searching products '
         })
     }
 }

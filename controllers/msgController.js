@@ -54,6 +54,24 @@ export const getusers = async (req, resp) => {
     }
 }
 
+
+export const getuser = async (req, resp) => {
+    try {
+        const user = await userModel.findOne({ _id: req.params.uid });
+        console.log(user)
+        if (user) {
+            resp.send({
+                success: true,
+                user
+            })
+        }
+    } catch (err) {
+        resp.send({
+            success: false
+        })
+    }
+}
+
 export const getMsg = async (req, resp) => {
     try {
         const msgs = await messages.find();
@@ -89,7 +107,7 @@ export const getSubs = async (req, resp) => {
 
 export const getOrders = async (req, resp) => {
     try {
-        const orders = orderModel.find();
+        const orders = await orderModel.find();
         if (orders) {
             resp.send({
                 success: true,
