@@ -19,6 +19,39 @@ export const getOrder = async (req, res) => {
     }
 }
 
+export const updateOrder = async (req, resp) => {
+
+    try {
+        const key = req.params.key
+        let status;
+        console.log("requestting")
+        console.log(req.params.key)
+        if (key == 1) {
+            status = "Shipped"
+        }
+        else if (key == 2) {
+            status = "Delivered"
+        }
+        else if (key == 3) {
+            status = "Cancelled"
+        }
+        const product = await orderModel.findByIdAndUpdate(req.params.oid, { status },);
+        await product.save();
+        resp.status(201).send({
+            success: true,
+            message: 'order updated',
+            product
+        })
+    } catch (error) {
+        resp.status(500).send({
+            success: false,
+            message: 'Error updating product',
+            error
+        })
+    }
+}
+
+
 export const deleteOrderController = async (req, resp) => {
     try {
         const product = await orderModel.findByIdAndUpdate(req.params.oid, { status: "Cancelled" },);
